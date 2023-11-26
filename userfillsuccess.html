@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,400;0,600;0,700;1,300;1,700&family=Yatra+One&display=swap" rel="stylesheet">
+    <style>
+    html{
+  font-family: 'Nunito', sans-serif;
+  scroll-behavior: smooth;
+  }
+  body{
+  background: linear-gradient(to right, #2bc0e4, #eaecc6);
+  }
+  .header{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 10000;
+    background:#222;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2%;
+    width:96%;
+    font-size: 62.5%;
+
+}
+.header .logo{
+    font-weight: bolder;
+    color:#fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.header .logo span{
+    color:deepskyblue;
+}
+
+.header .navbar a{
+    font-size: 1.2rem;
+    color:#fff;
+    margin-left: 2rem;
+    text-decoration: none;
+}
+
+.header .navbar a:hover{
+    color:deepskyblue
+}
+
+
+        .bo1 {
+            height: 360px;
+            width: 600px;
+            background: linear-gradient(45deg, #23074d, #cc5333);
+            position: relative;
+            left: 450px;
+            top: 120px;
+            border-radius: 30px;
+        }
+
+        .bo1:hover {
+            background-color: ;
+            transition: 1s;
+        }
+
+
+        li a {
+            text-decoration: none;
+            color: white;
+            position: relative;
+            top: 15px;
+        }
+
+        li {
+            list-style: none;
+            position: relative;
+            height: 50px;
+            width: 250px;
+            border: 2px solid white;
+            text-align: center;
+            background: linear-gradient(to right, #f12711, #f5af19);
+            border-radius: 20px;
+            top: 150px;
+            left: 175px;
+        }
+    </style>
+</head>
+
+<body>
+  <header class="header">
+        <a href="#" class="logo"> Event<span>LYE</span></a>
+
+        <nav class="navbar">
+
+           {% if user.is_authenticated %}
+            <a>Welcome, {{user.username}}</a>
+
+            <a href="{% url 'login' %}">Login again</a>
+           <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+        </nav>
+   </header>
+    <i class="material-icons"
+        style="position: relative;left: 730px;background-color: green;color: white;font-size: 55px;border-radius: 30px;top: 210px;z-index: 1;">check_circle</i>
+    <div class="bo1">
+        <div class="su" style="position: relative;z-index: 1;color: yellow;font-size: 60px;top: 80px;left: 190px;">
+            Success<span style="position: relative;color: red;">!</span></div>
+        <div class="your" style="position: relative;color: white;top: 110px;left: 110px;font-size: 30px;">
+            Your Details Filled Successfully
+        </div>
+        <li><a href="{% url 'login' %}">Login Here to check Your Details</a></li>
+    </div>
+</body>
+
+</html>

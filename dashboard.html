@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,400;0,600;0,700;1,300;1,700&family=Yatra+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+:root{
+    --main-color:deepskyblue;
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-decoration: none;
+    /*text-transform: capitalize;*/
+    transition: 2s linear;
+}
+html{
+    /*font-size: 62.5%;*/
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+    width: 1rem;
+}
+
+html::-webkit-scrollbar-track{
+    background: #444;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: var(--main-color);
+    border-radius: 5rem;
+}
+
+
+
+.header{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 10000;
+    background:#222;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2%;
+    width:100%;
+    font-size: 62.5%;
+
+}
+.header .logo{
+    font-weight: bolder;
+    color:#fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.header .logo span{
+    color:var(--main-color);
+}
+
+.header .navbar a{
+    font-size: 1.2rem;
+    color:#fff;
+    margin-left: 2rem;
+    text-decoration: none;
+}
+
+.header .navbar a:hover{
+    color:var(--main-color)
+}
+
+.cards{
+margin-top: 60px;
+width:100%;
+padding:35px 30px;
+display:grid;
+grid-template-columns: repeat(5, 1fr);
+grid-gap:20px;
+
+}
+.cards .card{
+background:var(--main-color);
+padding:20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-radius:20px;
+}
+.cards .card-number{
+font-size:35px;
+font-weight:500;
+color:white;
+}
+.cards .card-name{
+font-size:22px;
+font-weight:600;
+color:white;
+}
+.cards .icons{
+font-size:50px;
+}
+table {
+margin-left:auto;
+margin-top:auto;
+width:100%;
+padding:20px;
+
+}
+.table table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.table table th,
+.table table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+/* Styling for the separate border row */
+.table table .border-row {
+    border-bottom: 2px solid #000;
+    /* Adjust border styles as needed */
+}
+.table table .space-row {
+ height: 20px;
+}
+.table_header h1{
+padding:14px;
+}
+.search-container {
+    float: right;
+    margin-top: -50px; /* Adjust the margin as needed */
+}
+#searchInput {
+    padding: 9px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-right:30px;
+}
+</style>
+</head>
+<body>
+  <header class="header">
+        <a href="#" class="logo"> Event<span>LYE</span></a>
+
+        <nav class="navbar">
+           {% if user.is_authenticated %}
+           <a>Welcome, {{user.username}}</a>
+            <a href="{% url 'visible' %}">Chart Analysis</a>
+           <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+        </nav>
+   </header>
+  <div class="cards">
+      <div class="card" style="background:">
+          <div class="card-content">
+              <div class="card-name"> Total Users</div>
+              <div class="card-number">{{ all_user.count }}</div>
+          </div>
+          <div class="icons">
+              <i class='bx bx-user-circle' style="font-size:60px;"></i>
+          </div>
+      </div>
+      <div class="card">
+          <div class="card-content">
+              <div class="card-name">Wedding Events</div>
+              <div class="card-number">{{ WDE }}</div>
+          </div>
+          <div class="icons">
+              <i class="fi fi-rs-rings-wedding"></i>
+          </div>
+      </div>
+       <div class="card">
+          <div class="card-content">
+              <div class="card-name">Birthday Events</div>
+              <div class="card-number">{{ BDPT }}</div>
+          </div>
+           <div class="icons">
+              <i class="fa-solid fa-cake-candles"></i>
+          </div>
+      </div>
+       <div class="card">
+          <div class="card-content">
+              <div class="card-name">Organizational <br>Events</div>
+              <div class="card-number">{{ ORGE }}</div>
+          </div>
+           <div class="icons">
+              <i class="fa-solid fa-handshake"></i>
+          </div>
+      </div>
+
+  </div>
+   <main class="table">
+        <section class="table_header">
+            <h1>User's Details</h1>
+             <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search...">
+        </div>
+        </section>
+        <section class="table_body">
+         <table id="userTable">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Event Name</th>
+                    <th>User Address</th>
+                    <th>User Mobile</th>
+                    <th>Select Event</th>
+                    <th>Select Theme</th>
+                    <th>Select Pack</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Approx People</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+             <tr class="space-row">
+                    <td colspan="12">&nbsp;</td> <!-- Adjust colspan based on the number of columns -->
+                </tr>
+            </thead>
+            <tbody>
+             {% for i in all_user %}
+                <tr>
+                    <td>{{i.username}}</td>
+                    <td>{{i.useremail}}</td>
+                    <td>{{i.event_name}}</td>
+                    <td>{{i.user_address}}</td>
+                    <td>{{i.user_mobile}}</td>
+                    <td>{{i.select_event}}</td>
+                    <td>{{i.select_event_theme}}</td>
+                    <td>{{i.select_pack}}</td>
+                    <td>{{i.event_date}}</td>
+                    <td>{{i.event_date2}}</td>
+                    <td>{{i.approx_people}}</td>
+                    <td>{{i.description}}</td>
+                    <td>{{i.status}}</td>
+                    <td>
+                    <form action="{% url 'update_status' i.id %}" method="POST">
+                            {% csrf_token %}
+                            <select name="status">
+                                <option value="booked {% if i.status == 'booked' %} selected {% endif %}">Booked</option>
+                                <option value="cancelled {% if i.status == 'cancelled' %} selected {% endif %}">Cancelled</option>
+                                <option value="completed {% if i.status == 'completed' %} selected {% endif %}">Completed</option>
+                                <option value="pending {% if i.status == 'pending' %} selected {% endif %}">Pending</option>
+                            </select>
+                            <button type="submit">Update Status</button>
+                        </form>
+        </td>
+                    <td colspan="12">&nbsp;</td>
+                </tr>
+
+                {% if not forloop.last %}
+                <!-- Space row between data -->
+                <tr class="space-row">
+                    <td colspan="12">&nbsp;</td> <!-- Adjust colspan based on the number of columns -->
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+         </table>
+        </section>
+    </main>
+<script>
+const searchInput = document.getElementById('searchInput');
+const userTable = document.getElementById('userTable');
+
+searchInput.addEventListener('keyup', function(event) {
+    const searchText = event.target.value.toLowerCase();
+    const rows = userTable.getElementsByTagName('tr');
+
+    for (let row of rows) {
+        if (row.cells.length > 0 && !row.classList.contains('table-header')) {
+            let displayRow = false;
+
+            for (let i = 0; i < row.cells.length; i++) {
+                const cellText = row.cells[i].innerText.toLowerCase();
+                if (cellText.includes(searchText)) {
+                    displayRow = true;
+                    break;
+                }
+            }
+
+            row.style.display = displayRow ? 'table-row' : 'none';
+        }
+    }
+});
+</script>
+</body>
+</html>

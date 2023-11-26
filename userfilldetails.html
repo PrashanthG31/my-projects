@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/userfilldetails2.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,400;0,600;0,700;1,300;1,700&family=Yatra+One&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+        <a href="#" class="logo"> Event<span>LYE</span></a>
+
+        <nav class="navbar">
+
+           {% if user.is_authenticated %}
+                       <a href="{% url 'weddcatalog' %}">#Wedding</a>
+           <a href="{% url 'bircatalog' %}">#Birthday Party</a>
+           <a href="{% url 'orgcatalog' %}">#Organizational event</a>
+           <a>Welcome,{{user.username}}</a>
+           <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+        </nav>
+   </header>
+   <div class="wrapper">
+
+       <form action="" method="POST">
+           {% csrf_token %}
+            <div class="userdata">
+            <div class="field">
+                <h3>Your Name</h3>
+            <input type="text" placeholder="Enter Your Name" name="username">
+
+            </div>
+                <div class="field">
+                    <h3>Email-id (fill the email-id which is used for login)</h3>
+            <input type="email" placeholder="Enter Your Email" name="useremail">
+
+            </div>
+            </div>
+
+                <div class="userdata">
+                <div class="field">
+                    <h3>Your Event Name</h3>
+            <input type="text" placeholder="Enter Your Event Name" name="event_name">
+
+            </div>
+                   <div class="message">
+                       <h3>Address</h3>
+            <textarea name="user_address" cols="20" rows="5" placeholder="Address"></textarea>
+
+                   </div>
+                    </div>
+           <div class="userdata">
+                 <div class="field">
+               <h3>Select Your Event</h3>
+             <select id="slct1">
+                 <option>Select Your Event </option>
+             </select>
+
+            </div>
+            <div class="field">
+    <h3>Mobile No +91</h3>
+    <input type="text" pattern="(\+91|0)?[6-9]\d{9}" name="user_mobile" placeholder="Enter Your mobile" maxlength="10" required title="Enter a valid Indian mobile number (e.g.,  or 9876543210)">
+            </div>
+           </div>
+
+           <div class="userdata">
+                     <div class="field">
+                         <h3>Select your Theme/Stage</h3>
+                         <select id="slct2"><option>Select Your Theme/Stage </option></select>
+
+           </div>
+           <div class="field">
+                         <h3>Select your pack</h3>
+                         <select id="plans">
+                <option value="Select-pack">Select your Pack</option>
+                <option value="Sliver-pack">Sliver pack</option>
+                <option value="Golden-pack">Golden pack</option>
+                <option value="Premium-pack">Premium pack</option>
+                <option value="Luxury-pack">Luxury pack</option>
+                <option value="Platinum-pack">Platinum pack</option>
+            </select>
+           </div>
+           </div>
+
+           <div class="userdata">
+            <div class="field">
+                <h3>Event start Date</h3>
+            <input type="datetime-local" name="startDATE" id="date_time" pattern="\d{1,2}/\d{1,2}/\d{4} \d{1,2}:\d{2} [APap][Mm]" onchange="updateEndDateMin()" onfocus="setStartDateMin()" >
+
+            </div>
+               <div class="field">
+                   <h3>Approx People</h3>
+                   <input type="text" name="App_people" id="approx_people" maxlength="4">
+               </div>
+           </div>
+           <div class="userdata">
+            <div class="field">
+                <h3>Event End Date</h3>
+            <input type="datetime-local" name="dateEND" id="date_time2" pattern="\d{1,2}/\d{1,2}/\d{4} \d{1,2}:\d{2} [APap][Mm]">
+
+            </div></div>
+
+           <div class="message">
+                    <h3>Description</h3>
+            <textarea name="description" cols="20" rows="5" placeholder="Description"></textarea>
+
+                </div><br>
+           <div class="userdata">
+            <button type="submit">Submit</button>
+           </div>
+            <div class="backup" style="display:none;">
+       <table>
+         <tr>
+               <td>
+                   <input type="text" id="textBox" readonly name="select_event">
+               </td>
+               </tr>
+           <tr>
+              <td>
+                  <input type="text" id="textbox2" readonly name="select_event_theme">
+               </td>
+           </tr>
+           <tr>
+              <td>
+                  <input type="text" id="textbox3" readonly name="select_pack">
+               </td>
+           </tr>
+           <tr>
+              <td>
+                  <input type="text" id="textbox5" readonly name="event_date">
+              </td>
+           </tr>
+              <tr>
+              <td>
+                  <input type="text" id="textbox6" readonly name="event_date2">
+              </td>
+           </tr>
+       </table>
+   </div>
+
+       </form>
+   </div>
+
+
+       <script>
+           let species = ["Organizational-Events", "Birthday-Party" , "Wedding-Event",];
+
+   let orList = ["Inner-stage", "Hall-stage", "Small-stage", "conference stage" , 'launch-stage', 'mega launch-stage'];
+   let bdList = ['Bir-theme1', 'Bir-theme2', 'Bir-theme3', 'Bir-theme4','Bir-theme5','Bir-theme6','Bir-theme7','Bir-theme8','Bir-theme9','Bir-theme10','Bir-theme11','Bir-theme12'];
+   let wdList = ['Theme1', 'Theme2', 'Theme3', 'Theme4', 'Theme5', 'Theme6', 'Theme7', 'Theme8', 'Theme9','Theme10','Theme11','Theme12'];
+
+   let slct1 = document.getElementById("slct1");
+   let slct2 = document.getElementById("slct2");
+
+   // Populate the first dropdown with options
+   species.forEach(function (item) {
+       let option = document.createElement("option");
+       option.text = item;
+       option.value = item;
+       slct1.appendChild(option);
+   });
+
+   slct1.onchange = function () {
+       slct2.innerHTML = "<option></option>";
+       if (this.value == "Organizational-Events") {
+           addToSlct2(orList);
+       }
+       if (this.value == "Wedding-Event") {
+           addToSlct2(wdList);
+       }
+
+       if (this.value == 'Birthday-Party'){
+           addToSlct2(bdList);
+       }
+
+   }
+
+   function addToSlct2(arr) {
+       arr.forEach(function (item) {
+           let option = document.createElement("option");
+           option.text = item;
+           option.value = item;
+           slct2.appendChild(option);
+       });
+   }
+
+
+   document.getElementById('slct1').addEventListener('change',function() {
+         document.getElementById('textBox').value = document.getElementById('slct1').value;
+      })
+
+      document.getElementById('slct2').addEventListener('change',function() {
+         document.getElementById('textbox2').value = document.getElementById('slct2').value;
+      })
+
+       document.getElementById('plans').addEventListener('change',function() {
+         document.getElementById('textbox3').value = document.getElementById('plans').value;
+      })
+
+function setStartDateMin() {
+var startDateInput = document.getElementById('date_time');
+
+        // Set the min attribute of the start date input to the current date and time
+var currentDate = new Date();
+currentDate.setMinutes(currentDate.getMinutes() - currentDate.getTimezoneOffset());
+startDateInput.min = currentDate.toISOString().slice(0, 16);
+    }
+
+function updateEndDateMin() {
+        var startDateInput = document.getElementById('date_time');
+        var endDateInput = document.getElementById('date_time2');
+
+        // Set the min attribute of the end date input to the value of the start date input
+        endDateInput.min = startDateInput.value;
+    }
+
+const datetimeInput = document.getElementById('date_time');
+    const displayDateTime = document.getElementById('textbox5');
+
+    datetimeInput.addEventListener('input', function() {
+      // Parse the input value and format it in 12-hour format
+      const inputDate = new Date(datetimeInput.value);
+      const formattedDate = inputDate.toLocaleString('en-GB', {
+        year: 'numeric',
+        day: '2-digit',
+        month: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+      });
+      displayDateTime.value = formattedDate;
+    });
+
+       const datetimeInput2 = document.getElementById('date_time2');
+    const displayDateTime2 = document.getElementById('textbox6');
+
+    datetimeInput2.addEventListener('input', function() {
+      // Parse the input value and format it in 12-hour format
+      const inputDate2 = new Date(datetimeInput2.value);
+      const formattedDate2 = inputDate2.toLocaleString('en-GB', {
+        year: 'numeric',
+        day: '2-digit',
+        month: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+      });
+      displayDateTime2.value = formattedDate2;
+    });
+
+
+       </script>
+</body>
+</html>

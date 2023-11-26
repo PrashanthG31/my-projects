@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,400;0,600;0,700;1,300;1,700&family=Yatra+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<style>
+:root{
+    --main-color:deepskyblue;
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin:0; padding:0;
+
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-decoration: none;
+    /*text-transform: capitalize;*/
+    transition: 2s linear;
+}
+html{
+    /*font-size: 62.5%;*/
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+    width: 1rem;
+}
+
+html::-webkit-scrollbar-track{
+    background: #444;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: var(--main-color);
+    border-radius: 5rem;
+}
+
+
+
+.header{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 10000;
+    background:#222;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2%;
+    width:100%;
+    font-size: 62.5%;
+
+}
+.header .logo{
+    font-weight: bolder;
+    color:#fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.header .logo span{
+    color:var(--main-color);
+}
+
+.header .navbar a{
+    font-size: 1.2rem;
+    color:#fff;
+    margin-left: 2rem;
+    text-decoration: none;
+}
+
+.header .navbar a:hover{
+    color:var(--main-color)
+}
+
+.mainChart{
+ display:flex;
+ justify-content:space-around;
+ margin-top:100px;
+}
+.mainChart-1{
+ display:flex;
+ justify-content:space-around;
+ margin-top:30px;
+ margin-bottom:30px;
+}
+  .chartBox {
+        width: 400px;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px rgba(54, 162, 235, 1);
+        background: white;
+
+      }
+.columns-container {
+    display: flex;
+    justify-content: space-between; /* Adjust as needed */
+}
+
+.column {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+</style>
+</head>
+<body>
+ <header class="header">
+        <a href="" class="logo"> Event<span>LYE</span></a>
+
+        <nav class="navbar">
+            <a href="">Welcome, {{user.username}}</a>
+           <a href="{% url 'Dashboard' %}">Dashboard</a>
+            <a href="{% url 'logout' %}">Logout</a>
+
+        </nav>
+   </header>
+
+<div class="mainChart">
+<div class="chartBox">
+    <canvas id="eventChart"></canvas>
+    <ul>
+        <li>Wedding Events: <span>{{ WDE }}</span></li>
+        <li>Birthday Party: <span>{{ BDPT }}</span></li>
+        <li>Organizational Event: <span>{{ ORGE }}</span></li>
+
+    </ul>
+</div>
+    <div class="chartBox" >
+    <canvas id="packChart"></canvas>
+    <ul>
+        <li>Sliver-pack: <span>{{ SLIVER }}</span></li>
+        <li>Golden-pack: <span>{{ GOLDEN }}</span></li>
+        <li>Premium-pack: <span>{{ PREM }}</span></li>
+        <li>Luxury-pack: <span>{{ LUXURY }}</span></li>
+        <li>Platinum-pack: <span>{{ PLAT }}</span></li>
+    </ul>
+</div>
+     <div class="chartBox" style="width:400px;">
+    <canvas id="birthday"></canvas><br>
+     <div class="columns-container">
+    <ul class="column">
+        <li>Bir-Theme1: <span>{{ BIR1 }}</span></li>
+        <li>Bir-Theme2: <span>{{ BIR2 }}</span></li>
+        <li>Bir-Theme3: <span>{{ BIR3 }}</span></li>
+        <li>Bir-Theme4: <span>{{ BIR4 }}</span></li>
+        <li>Bir-Theme5: <span>{{ BIR5 }}</span></li>
+        <li>Bir-Theme6: <span>{{ BIR6 }}</span></li>
+    </ul>
+
+    <ul class="column">
+        <li>Bir-Theme7: <span>{{ BIR7 }}</span></li>
+        <li>Bir-Theme8: <span>{{ BIR8 }}</span></li>
+        <li>Bir-Theme9: <span>{{ BIR9 }}</span></li>
+        <li>Bir-Theme10: <span>{{ BIR10 }}</span></li>
+        <li>Bir-Theme11: <span>{{ BIR11 }}</span></li>
+        <li>Bir-Theme12: <span>{{ BIR12 }}</span></li>
+    </ul>
+</div>
+</div>
+</div>
+<br>
+<div class="mainChart-1">
+    <div class="chartBox" style="width:400px;">
+    <canvas id="wedding"></canvas><br>
+     <div class="columns-container">
+    <ul class="column">
+        <li>Wedding-Theme1: <span>{{ WED1 }}</span></li>
+        <li>Wedding-Theme2: <span>{{ WED2 }}</span></li>
+        <li>Wedding-Theme3: <span>{{ WED3 }}</span></li>
+        <li>BWedding-Theme4: <span>{{ WED4 }}</span></li>
+        <li>Wedding-Theme5: <span>{{ WED5 }}</span></li>
+        <li>Wedding-Theme6: <span>{{ WED6 }}</span></li>
+    </ul>
+
+    <ul class="column">
+        <li>Wedding-Theme7: <span>{{ WED7 }}</span></li>
+        <li>Wedding-Theme8: <span>{{ WED8 }}</span></li>
+        <li>Wedding-Theme9: <span>{{ WED9 }}</span></li>
+        <li>Wedding-Theme10: <span>{{ WED10 }}</span></li>
+        <li>Wedding-Theme11: <span>{{ WED11 }}</span></li>
+        <li>Wedding-Theme12: <span>{{ WED12 }}</span></li>
+    </ul>
+</div>
+</div>
+    <div class="chartBox" >
+    <canvas id="org"></canvas>
+    <ul>
+        <li>Inner-stage: <span>{{ ORG1 }}</span></li>
+        <li>Hall-stage: <span>{{ ORG2 }}</span></li>
+        <li>Small-stage: <span>{{ ORG3 }}</span></li>
+        <li>conference stage: <span>{{ ORG4 }}</span></li>
+        <li>launch-stage: <span>{{ ORG5 }}</span></li>
+        <li>mega launch-stage: <span>{{ ORG6 }}</span></li>
+    </ul>
+</div>
+
+</div>
+<!--        <h3>Organization Events: => {{ORGE}}</h3>-->
+<!--        <h3>Birthday Party: => {{BDPT}}</h3>-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"> </script>
+<script>
+const events = document.getElementById('eventChart');
+new Chart(events, {
+  type: 'pie',
+  data: {
+    labels: ['Wedding-Event', 'Birthday-Party', 'Organizational-Events', 'School/College Events'],
+    datasets: [{
+      label: 'No of Users Registered',
+      data: [{{ WDE }}, {{ BDPT }}, {{ ORGE }}, {{ SCHCLG }}],
+      barThickness: 50,
+      backgroundColor: [
+        'rgba(89, 50, 143, 0.8)', 'rgba(153, 102, 255, 0.8)',
+        'rgba(240, 120, 50, 0.8)', 'rgba(46, 102, 96, 0.8)'],
+<!--      borderColor: [-->
+<!--        'rgba(89, 50, 143, 1)', 'rgba(153, 102, 255, 1)',-->
+<!--        'rgba(240, 120, 50, 1)', 'rgba(46, 102, 96, 1)'],-->
+      hoverOffset: 30,
+      }]
+  },
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Number of Users Registered for Events',
+        font: {
+          size: 20
+        }
+      }
+    }
+  },
+   legend: {
+      display: true,
+      position: 'right', // Adjust position if needed
+      labels: {
+        font: {
+          size: 50 // Change the font size of the legend
+        }
+      }
+    }
+});
+
+const packs = document.getElementById('packChart');
+new Chart(packs, {
+  type: 'pie',
+  data: {
+    labels: ['Sliver-pack', 'Golden-pack', 'Premium-pack', 'Luxury-pack', 'Platinum-pack'],
+    datasets: [{
+      label: 'No of Users Registered',
+      data: [{{ SLIVER }}, {{ GOLDEN }}, {{ PREM }}, {{ LUXURY }}, {{ PLAT }}],
+      barThickness: 50,
+      backgroundColor: [
+        'rgba(89, 50, 143, 0.8)', 'rgba(153, 102, 255, 0.8)',
+        'rgba(240, 120, 50, 0.8)', 'rgba(46, 102, 96, 0.8)'],
+<!--      borderColor: [-->
+<!--        'rgba(89, 50, 143, 1)', 'rgba(153, 102, 255, 1)',-->
+<!--        'rgba(240, 120, 50, 1)', 'rgba(46, 102, 96, 1)'],-->
+      hoverOffset: 30,
+      }]
+  },
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Number of Users Registered for Events',
+        font: {
+          size: 20
+        }
+      }
+    }
+  },
+   legend: {
+      display: true,
+      position: 'right', // Adjust position if needed
+      labels: {
+        font: {
+          size: 50 // Change the font size of the legend
+        }
+      }
+    }
+});
+
+const themes = document.getElementById('birthday');
+new Chart(themes, {
+  type: 'pie',
+  data: {
+    labels: ['Bir-theme1','Bir-theme2','Bir-theme3','Bir-theme4','Bir-theme5','Bir-theme6',
+             'Bir-theme7','Bir-theme8','Bir-theme9','Bir-theme10','Bir-theme11','Bir-theme12',],
+    datasets: [{
+      label: 'No of Users Registered',
+      data: [{{ BIR1 }},{{ BIR2 }},{{ BIR3 }},{{ BIR4 }},{{ BIR5 }},{{ BIR6 }},
+             {{ BIR7 }},{{ BIR8 }},{{ BIR9 }},{{ BIR10 }},{{ BIR11 }},{{ BIR12 }},],
+      barThickness: 50,
+      backgroundColor: [
+        'rgba(89, 50, 143, 0.8)', 'rgba(153, 102, 255, 0.8)',
+        'rgba(240, 120, 50, 0.8)', 'rgba(46, 102, 96, 0.8)'],
+<!--      borderColor: [-->
+<!--        'rgba(89, 50, 143, 1)', 'rgba(153, 102, 255, 1)',-->
+<!--        'rgba(240, 120, 50, 1)', 'rgba(46, 102, 96, 1)'],-->
+      hoverOffset: 30,
+      }]
+  },
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Number of Users Registered for Events',
+        font: {
+          size: 20
+        }
+      }
+    }
+  },
+   legend: {
+      display: true,
+      position: 'right', // Adjust position if needed
+      labels: {
+        font: {
+          size: 50 // Change the font size of the legend
+        }
+      }
+    }
+});
+
+const wedd = document.getElementById('wedding');
+new Chart(wedd, {
+  type: 'pie',
+  data: {
+    labels: ['Theme1','Theme2','Theme3','Theme4','Theme5','Theme6',
+             'Theme7','Theme8','Theme9','Theme10','Theme11','Theme12',],
+    datasets: [{
+      label: 'No of Users Registered',
+      data: [{{ WED1 }},{{ WED2 }},{{ WED3 }},{{ WED4 }},{{ WED5 }},{{ WED6 }},
+             {{ WED7 }},{{ WED8 }},{{ WED9 }},{{ WED10 }},{{ WED11 }},{{ WED12 }},],
+      barThickness: 50,
+      backgroundColor: [
+        'rgba(89, 50, 143, 0.8)', 'rgba(153, 102, 255, 0.8)',
+        'rgba(240, 120, 50, 0.8)', 'rgba(46, 102, 96, 0.8)'],
+<!--      borderColor: [-->
+<!--        'rgba(89, 50, 143, 1)', 'rgba(153, 102, 255, 1)',-->
+<!--        'rgba(240, 120, 50, 1)', 'rgba(46, 102, 96, 1)'],-->
+      hoverOffset: 30,
+      }]
+  },
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Number of Users Registered for Events',
+        font: {
+          size: 20
+        }
+      }
+    }
+  },
+   legend: {
+      display: true,
+      position: 'right', // Adjust position if needed
+      labels: {
+        font: {
+          size: 50 // Change the font size of the legend
+        }
+      }
+    }
+});
+
+const orgs = document.getElementById('org');
+new Chart(orgs, {
+  type: 'pie',
+  data: {
+    labels: ['Inner-stage', 'Hall-stage', 'Small-stage', 'conference stage', 'launch-stage', 'mega launch-stage'],
+    datasets: [{
+      label: 'No of Users Registered',
+      data: [{{ ORG1 }}, {{ ORG2 }}, {{ ORG3 }}, {{ ORG4 }}, {{ ORG5 }}, {{ ORG6 }}],
+      barThickness: 50,
+      backgroundColor: [
+        'rgba(89, 50, 143, 0.8)', 'rgba(153, 102, 255, 0.8)',
+        'rgba(240, 120, 50, 0.8)', 'rgba(46, 102, 96, 0.8)'],
+<!--      borderColor: [-->
+<!--        'rgba(89, 50, 143, 1)', 'rgba(153, 102, 255, 1)',-->
+<!--        'rgba(240, 120, 50, 1)', 'rgba(46, 102, 96, 1)'],-->
+      hoverOffset: 30,
+      }]
+  },
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Number of Users Registered for Events',
+        font: {
+          size: 20
+        }
+      }
+    }
+  },
+   legend: {
+      display: true,
+      position: 'right', // Adjust position if needed
+      labels: {
+        font: {
+          size: 50 // Change the font size of the legend
+        }
+      }
+    }
+});
+
+const scclg = document.getElementById('scc');
+new Chart(scclg, {
+  type: 'pie',
+  data: {
+    labels: ['Front-stage', 'conference-stage', 'Musical-stage', 'Annual-day function', 'meetings', 'Big-Stage'],
+    datasets: [{
+      label: 'No of Users Registered',
+      data: [{{ SC1 }}, {{ SC2 }}, {{ SC3 }}, {{ SC4 }}, {{ SC5 }}, {{ SC6 }}],
+      barThickness: 50,
+      backgroundColor: [
+        'rgba(89, 50, 143, 0.8)', 'rgba(153, 102, 255, 0.8)',
+        'rgba(240, 120, 50, 0.8)', 'rgba(46, 102, 96, 0.8)'],
+<!--      borderColor: [-->
+<!--        'rgba(89, 50, 143, 1)', 'rgba(153, 102, 255, 1)',-->
+<!--        'rgba(240, 120, 50, 1)', 'rgba(46, 102, 96, 1)'],-->
+      hoverOffset: 30,
+      }]
+  },
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Number of Users Registered for Events',
+        font: {
+          size: 20
+        }
+      }
+    }
+  },
+   legend: {
+      display: true,
+      position: 'right', // Adjust position if needed
+      labels: {
+        font: {
+          size: 50 // Change the font size of the legend
+        }
+      }
+    }
+});
+</script>
+</body>
+</html>

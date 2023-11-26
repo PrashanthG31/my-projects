@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EventLYE-HOME</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homepage2.css' %}">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,400;0,600;0,700;1,300;1,700&family=Yatra+One&display=swap" rel="stylesheet">
+</head>
+<body>
+<!--<div class="bodycolor">-->
+   <header class="header">
+        <a href="#" class="logo"> Event<span>LYE</span></a>
+
+        <nav class="navbar">
+           <a href="{% url 'weddcatalog' %}">#Wedding</a>
+           <a href="{% url 'bircatalog' %}">#Birthday Party</a>
+           <a href="{% url 'orgcatalog' %}">#Organizational event</a>
+<!--           <a href="#gallery">Gallery</a>-->
+           <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+
+
+        </nav>
+   </header>
+    <section class="home" id="home">
+    <div class="content">
+        <h3>It's Time to Celebrate <span><br>Our Events!</span></h3>
+    </div>
+    </section>
+   <div class="homeslider">
+       <span style="--i:1;"><img src="{% static 'images/birthday-party2.jpg' %}"></span>
+       <span style="--i:2;"><img src="{% static 'images/birthday-party1.jpg' %}"></span>
+       <span style="--i:3;"><img src="{% static 'images/wedding1.jpg' %}"></span>
+       <span style="--i:4;"><img src="{% static 'images/wedding2.jpg' %}"></span>
+       <span style="--i:5;"><img src="{% static 'images/wedding3.jpg' %}"></span>
+       <span style="--i:6;"><img src="{% static 'images/corporate1.jpg' %}"></span>
+       <span style="--i:7;"><img src="{% static 'images/corporate2.jpg' %}"></span>
+       <span style="--i:8;"><img src="{% static 'images/corporate3.jpg' %}"></span>
+       <span style="--i:9;"><img src="{% static 'images/birthday-party3.jpg' %}"></span>
+       <span style="--i:10;"><img src="{% static 'images/birthday-party4.jpg' %}"></span>
+       <span style="--i:11;"><img src="{% static 'images/college1.jpg' %}"></span>
+       <span style="--i:12;"><img src="{% static 'images/college2.jpg' %}"></span>
+   </div>
+
+<div class="about">
+    <center><h1>@EventLYE!</h1></center>
+    <p>We provides the best event organisational management service.</p>
+    <p>Website to the Organisers and to the customers with colourful</p>
+    <p>and selective way to use the events registration and choices.</p>
+    <p>We have wonderful organisers who are with more experience.</p>
+    <br>
+    <p>#Enjoy your events with colourful decorations!</p>
+</div>
+<br><br><hr><br><br>
+<div class="ser">
+    <h2>Click on the events in Event<span>LYE</span> to know our Plans</h2>
+</div>
+<div class="container">
+      <div class="card-1">
+          <img src="{% static 'images/wedding1.jpg' %}">
+          <div class="intro">
+              <a href="{% url 'weddcatalog' %}"><h1 style="color:#fff;">Wedding Planners</h1></a>
+<!--              <p>Our Wedding Planners will help your wedding <br>visuals with beauty of colors and decorations.<br>-->
+<!--               Your beauty of love and respect is viewed by our planners.</p>-->
+              <p>Our Wedding event Planners will help your organisations event visuals with beauty of colors and decorations.
+               Your stage will be designed for the theme you have needs by our planners.</p>
+          </div>
+      </div>
+      <div class="card-1">
+          <img src="{% static 'images/birthday-party3.jpg' %}">
+          <div class="intro">
+              <a href="{% url 'bircatalog' %}"><h1 style="color:#fff;">Birthday Parties</h1></a>
+              <p>Our Birthday event Planners will help your organisations event visuals with beauty of colors and decorations.
+               Your stage will be designed for the theme you have needs by our planners.</p>
+          </div>
+      </div>
+      <div class="card-1">
+          <img src="{% static 'images/corporate1.jpg' %}">
+          <div class="intro">
+              <a href="{% url 'orgcatalog' %}"><h1 style="color:#fff;">Corporate Events</h1></a>
+              <p>Our Organisation event Planners will help your organisations event visuals with beauty of colors and decorations.
+               Your stage will be designed for the theme you have needs by our planners.</p>
+          </div>
+      </div>
+
+  </div>
+
+<div class="rev">
+    <hr><br>
+    <center><h1>Reviews by our Users!</h1></center>
+</div>
+
+<div class="review">
+    <div class="profile-1">
+        <img src="{% static 'images/wedding2.jpg' %}">
+        <div class="con">
+            <h1>review's name</h1>
+            <p>Our Organisation event Planners will help your organisations event visuals with beauty of colors and decorations.
+               Your stage will be designed for the theme you have needs by our planners.</p>
+        </div>
+    </div>
+
+    <div class="profile-1">
+        <img src="{% static 'images/wedding2.jpg' %}">
+        <div class="con">
+            <h1>review's name</h1>
+            <p>Our Organisation event Planners will help your organisations event visuals with beauty of colors and decorations.
+               Your stage will be designed for the theme you have needs by our planners.</p>
+        </div>
+    </div>
+
+    <div class="profile-1">
+        <img src="{% static 'images/wedding2.jpg' %}">
+        <div class="con">
+            <h1>review's name</h1>
+            <p>Our Organisation event Planners will help your organisations event visuals with beauty of colors and decorations.
+               Your stage will be designed for the theme you have needs by our planners.</p>
+        </div>
+    </div>
+</div>
+
+<div class="review">
+    <div class="profile-1">
+        <img src="{% static 'images/wedding2.jpg' %}">
+        <div class="con">
+            <h1>review's name</h1>
+            <p>Our Organisation event Planners will help your organisations event visuals with beauty of colors and decorations.
+               Your stage will be designed for the theme you have needs by our planners.</p>
+        </div>
+    </div>
+
+    <div class="profile-1">
+        <img src="{% static 'images/wedding2.jpg' %}">
+        <div class="con">
+            <h1>review's name</h1>
+            <p>Our Organisation event Planners will help your organisations event visuals with beauty of colors and decorations.
+               Your stage will be designed for the theme you have needs by our planners.</p>
+        </div>
+    </div>
+
+    <div class="profile-1">
+        <img src="{% static 'images/wedding2.jpg' %}">
+        <div class="con">
+            <h1>review's name</h1>
+            <p>Our Organisation event Planners will help your organisations event visuals with beauty of colors and decorations.
+               Your stage will be designed for the theme you have needs by our planners.</p>
+        </div>
+    </div>
+</div>
+<br>
+<br><br>
+
+<div class="footer">
+    <div class="details">
+        <h1>Event<span>LYE</span></h1>
+        <p>The EventLYE is a website for event management</p>
+        <p>The organisers can showcase their profile for </p>
+        <p>their works and the needs.</p>
+        <p>Our website shows colourful experience and more options</p>
+        <p>to choose your celebration the best organiser with unique</p>
+        <p>and with different decorations and different premiums</p>
+        <p>within your budget you invest on your celebrating events.</p>
+    </div>
+    <div class="add">
+        <h1>contact us</h1><br>
+        <div class="logo-1">
+          <i class="fa fa-phone" style="color:deepskyblue;"></i>&ensp;<p>+91 6385596959</p><br><br>
+          <i class="fa fa-envelope" style="color:red;"></i>&ensp;<p>abc@gmail.com</p><br><br>
+          <i class="fa fa-map-marker" style="color:lightgreen;"></i><br><p>Street name,<br>
+                                              coimbatore</p>
+            </div>
+    </div>
+    <div class="connect">
+        <h1>connect with us!</h1><br>
+        <div class="logo">
+        <a href="#"><i class="fa-brands fa-whatsapp" style="color:#25D044;"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook" style="color:blue;"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram" style="color:deeppink;"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter" style="color:deepskyblue;"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube" style="color:red;"></i></a>
+    </div>
+</div>
+</div>
+<div class="rights">
+    <h1>Copyrights &copy; 2023 | Designed by Prashanth G | All Rights Reserved.</h1>
+</div>
+<!--</div>-->
+</body>
+</html>

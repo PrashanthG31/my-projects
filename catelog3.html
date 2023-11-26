@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizational Catalog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,400;0,600;0,700;1,300;1,700&family=Yatra+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+:root {
+  --primary: #ec994b;
+  --white: #ffffff;
+  --bg: #f5f5f5;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Nunito', sans-serif;
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 1440px) {
+  html {
+    zoom: 1.5;
+  }
+}
+
+@media (min-width: 2560px) {
+  html {
+    zoom: 1.7;
+  }
+}
+
+@media (min-width: 3860px) {
+  html {
+    zoom: 2.5;
+  }
+}
+html::-webkit-scrollbar{
+    width: 1rem;
+}
+
+html::-webkit-scrollbar-track{
+    background: #444;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: deepskyblue;
+    border-radius: 5rem;
+}
+body {
+  font-size: 1.3rem;
+  background: linear-gradient(135deg, #8a2387, #e94057, #f27121);
+    background-size: 200% 200%;
+    animation: color 12s ease-in-out infinite;
+}
+@keyframes color{
+   0%{
+   background-position: 0 70%;
+   }
+   50%{
+   background-position: 100% 70%;
+   }
+   100%{
+   background-position: 0 70%;
+   }
+}
+.container {
+  max-width: 124rem;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-heading {
+  font-size: 3rem;
+  color: var(--primary);
+  padding: 2rem 0;
+}
+
+#tranding {
+  padding: 1rem 0;
+}
+
+@media (max-width:1440px) {
+  #tranding {
+    padding: 7rem 0;
+  }
+}
+
+#tranding .tranding-slider {
+  height: 52rem;
+  padding: 2rem 0;
+  position: relative;
+}
+
+@media (max-width:500px) {
+  #tranding .tranding-slider {
+    height: 45rem;
+  }
+}
+
+.tranding-slide {
+  width: 60rem;
+  height: 42rem;
+  position: relative;
+}
+
+@media (max-width:500px) {
+  .tranding-slide {
+    width: 28rem !important;
+    height: 36rem !important;
+  }
+  .tranding-slide .tranding-slide-img video,
+  tranding-slide .tranding-slide-img img{
+    width: 28rem !important;
+    height: 36rem !important;
+    overflow: hidden;
+  }
+}
+
+.tranding-slide .tranding-slide-img video,
+ .tranding-slide .tranding-slide-img img{
+  width: 60rem;
+  height: 42rem;
+  border-radius: 2rem;
+  object-fit: cover;
+}
+.tranding-slide .tranding-slide-img video controls{
+curser:pointer
+}
+.tranding-slide .tranding-slide-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.tranding-slide-content .food-price {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  color: var(--white);
+}
+
+.tranding-slide-content .tranding-slide-content-bottom {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  color: var(--white);
+}
+
+.food-rating {
+  padding-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.rating ion-icon {
+  color: var(--primary);
+}
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none;
+}
+
+.info{
+margin-left:0px;
+display:flex;
+justify-content:space-around;
+}
+.list-packs{
+background:white;
+padding:20px;
+border-radius:40px;
+}
+.list-packs dl, dt, dd{
+margin-bottom:6px;
+border-radius:15px;
+}
+.head{
+font-size:30px;
+color:linear-gradient(45deg,deepskyblue,yellow);
+}
+</style>
+  </head>
+
+  <body>
+    <section id="tranding">
+      <div class="container">
+        <h1 class="text-center section-subheading" style="color:white; font-size:30px;">Event<span style="color:deepskyblue">LYE</span></h1>
+        <h1 class="text-center section-heading" style="color:yellow">#Organizational Event - Welcome to our Organizational Event</h1>
+
+      </div>
+      <div class="container">
+        <div class="swiper tranding-slider">
+          <div class="swiper-wrapper">
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                 <video width="100%"  autoplay muted>
+  <source src="{% static 'videos/orgTheme1.mp4' %}" type="video/mp4">
+  Your browser does not support the video tag.
+       </video>
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <video width="100%"  autoplay muted>
+  <source src="{% static 'videos/orgTheme2.mp4' %}" type="video/mp4">
+  Your browser does not support the video tag.
+       </video>
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+        <img src="{% static 'images/corporate1.jpg' %}">
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+            <img src="{% static 'images/corporate2.jpg' %}">
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img src="{% static 'images/corporate3.jpg' %}">
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img src="{% static 'images/orgTheme6.jpg' %}">
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+               <img src="{% static 'images/orgTheme7.jpg' %}">
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img src="{% static 'images/orgTheme8.jpg' %}">
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img src="{% static 'images/orgTheme9.jpg' %}">
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img src="{% static 'images/orgTheme10.jpg' %}">
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <video width="100%"  autoplay muted>
+  <source src="{% static 'videos/orgTheme12.mp4' %}" type="video/mp4">
+  Your browser does not support the video tag.
+       </video>
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <video width="100%"  autoplay muted>
+  <source src="{% static 'videos/orgTheme11.mp4' %}" type="video/mp4">
+  Your browser does not support the video tag.
+       </video>
+              </div>
+              <div class="tranding-slide-content">
+                <h1 class="food-price"></h1>
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">
+
+                  </h2>
+                  <h3 class="food-rating">
+                    <span></span>
+
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+<div class="head" style="margin-bottom:8px;text-align:center; color:yellow; font-size:20px;"><h1>Organizational Event Catalogs</h1></div><br>
+
+    <div class="info">
+        <div class="list-packs" style="background:#EDEDED; border: 7px #C0C0C0 solid;">
+            <dl>
+                <dt style="background: #C0C0C0;padding:10px;">Sliver Pack</dt>
+                   <dd>Background Screen - small </dd>
+                   <dd>Main setup - Basic</dd>
+                   <dd>Stage Lights - 4 Basic Lights</dd>
+                   <dd>Entrance Decors - Basic Decoration</dd>
+                   <dd>DJ and Musical intro - Negotiable</dd>
+                   <dd>Other Accessories - negotiable</dd>
+            </dl>
+
+        </div>
+         <div class="list-packs" style="background: #FFE86D; border: 7px #FFD700 solid;">
+            <dl>
+                <dt style="background:#FFD700;padding:10px;font-weight:600;">Golden Pack</dt>
+                   <dd>Background Screen - Medium</dd>
+                   <dd>Main Setup - Medium </dd>
+                   <dd>Stage Lights -  6 Basic and 3 disco Lights</dd>
+                   <dd>Entrance Decors - Theme-based Decoration</dd>
+                   <dd>DJ and Musical intro - Negotiable</dd>
+                   <dd>Other AAccessories - Negotiable</dd>
+            </dl>
+         </div>
+     <div class="list-packs" style="background:#7E9AEB; color:#fff; border: 7px #4169E1 solid;">
+            <dl>
+                <dt style="background: #4169E1;padding:10px;font-weight:600;">Premium Pack</dt>
+                   <dd>Background Screen - Higher LED Display</dd>
+                   <dd>Main Setup - To Company's requirements</dd>
+                   <dd>Stage Lights - 6 Basic and 6 Disco Lights</dd>
+                   <dd>Entry ID and scanning - Available</dd>
+                   <dd>Photography - Negotiable (multi options available)</dd>
+                   <dd>Visitors Arrangements - Premium</dd>
+                   <dd>DJ and Musical intro - Negotiable</dd>
+                   <dd>Traditional and Western Dance - Negotiable</dd>
+            </dl>
+
+        </div>
+    </div>
+    <br>
+    <div class="info">
+
+         <div class="list-packs" style="background:#AB84C8; color:#fff; border: 7px #662d91 solid;">
+            <dl>
+                <dt style="background:#662d91;padding:10px;font-weight:600;">Luxury Pack</dt>
+                   <dd>Background Screen - Larger LED Display</dd>
+                   <dd>Main Setup - Front and Back setup</dd>
+                   <dd>Stage Lights - LED with colors </dd>
+                   <dd>Ceiling and Wall Decors - Premium to the Theme</dd>
+                   <dd>Welcome Gesture - Available</dd>
+                   <dd>Celebration Setup - Premium</dd>
+                   <dd>Entry ID and scanning - Available</dd>
+                   <dd>Entrance Decors - Premium with Theme base Decoration</dd>
+                   <dd>Photography - Negotiable (multi options available)</dd>
+                   <dd>Special 3D Shows - Available for launches</dd>
+                   <dd>DJ and Musical intro - Negotiable</dd>
+                   <dd>Traditional and Western Dance - Negotiable</dd>
+                   <dd>Other Accessories - Negotiable</dd>
+            </dl>
+         </div>
+         <div class="list-packs" style="background:#441300; color:#fff; border: 7px #795648 solid;">
+            <dl>
+                <dt style="background:#795648;padding:10px;font-weight:600;">Platinum Pack</dt>
+                   <dd>Background Screen - Larger curved LED Display</dd>
+                   <dd>Main Setup - Front and Back setup</dd>
+                   <dd>Stage Lights - LED with colors </dd>
+                   <dd>Ceiling and Wall Decors - Premium to the Theme</dd>
+                   <dd>Welcome Gesture - Available</dd>
+                   <dd>Celebration Setup - Premium with Gestures</dd>
+                   <dd>Entry ID and scanning - Available</dd>
+                   <dd>Entrance Decors - Premium with Theme base Decoration</dd>
+                   <dd>Photography - Negotiable (multi options available)</dd>
+                   <dd>Special 3D Shows - Available for launches</dd>
+                   <dd>DJ and Musical intro - Negotiable</dd>
+                   <dd>Traditional and Western Dance - Negotiable</dd>
+                   <dd>Other Accessories - Negotiable</dd>
+            </dl>
+         </div>
+    </div><br>
+     <div class="footer" style="background:#333;padding:30px;color:#fff">
+      <h3>The contents of videos and details are used for educational purpose</h3>
+      <h3>Please Don't use the contents to your projects</h3>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+
+var TrandingSlider = new Swiper('.tranding-slider', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      loop: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 2.5,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on: {
+        slideChange: function () {
+          var currentSlide = this.slides[this.activeIndex];
+          var videos = document.querySelectorAll('.tranding-slide-img video');
+          videos.forEach(function (video) {
+            if (video !== currentSlide.querySelector('video')) {
+              video.pause(); // Pause other videos
+            } else {
+              video.play(); // Play the current center video
+            }
+          });
+        },
+      },
+    });
+    </script>
+  </body>
+
+</html>

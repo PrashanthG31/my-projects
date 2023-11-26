@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,400;0,600;0,700;1,300;1,700&family=Yatra+One&display=swap" rel="stylesheet">
+    <style>
+
+:root{
+    --main-color:deepskyblue;
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-decoration: none;
+    /*text-transform: capitalize;*/
+    transition: 2s linear;
+}
+html{
+    /*font-size: 62.5%;*/
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+    width: 1rem;
+}
+
+html::-webkit-scrollbar-track{
+    background: #444;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: var(--main-color);
+    border-radius: 5rem;
+}
+
+table {
+margin-top:90px;
+border: 1px solid black;
+border-collapse: collapse;
+}
+
+table tr td {
+border: 1px solid black;
+padding: 5px;
+}
+.header{
+position: fixed;
+top:0; left:0; right:0;
+z-index: 10000;
+background: #222;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1rem 2%;
+    width:100%;
+    font-size: 62.5%;
+}
+
+
+
+.header .logo{
+    font-weight: bolder;
+    color:#fff;
+    font-size: 2rem;
+}
+
+.header .logo span{
+    color:var(--main-color);
+}
+
+.header .navbar a{
+    font-size: 1.2rem;
+    color:#fff;
+    margin-left: 2rem;
+}
+
+.header .navbar a:hover{
+    color:var(--main-color)
+}
+
+    </style>
+</head>
+<body>
+ <header class="header">
+        <a href="" class="logo"> Event<span>LYE</span></a>
+
+        <nav class="navbar">
+            <a href="">Welcome, {{user.username}}</a>
+           <a href="{% url 'userfilldetails' %}">New Booking</a>
+            <a href="{% url 'logout' %}">Logout</a>
+
+        </nav>
+   </header>
+
+    <table>
+        <tr>
+            <td>Email</td>
+            <td>Username</td>
+            <td>Event Name</td>
+            <td>User Address</td>
+            <td>User Mobile</td>
+            <td>Select Event</td>
+            <td>Select Event Theme</td>
+            <td>Select Pack</td>
+            <td>Approx People</td>
+            <td>Event Date</td>
+            <td>Event Date2</td>
+            <td>Description</td>
+            <td>Status</td>
+        </tr>
+        {% for i in usern %}
+            <tr>
+                <td>{{ i.useremail }}</td>
+                <td>{{ i.username }}</td>
+                <td>{{ i.event_name }}</td>
+                <td>{{ i.user_address }}</td>
+                <td>{{ i.user_mobile }}</td>
+                <td>{{ i.select_event }}</td>
+                <td>{{ i.select_event_theme }}</td>
+                <td>{{ i.select_pack }}</td>
+                <td>{{ i.approx_people }}</td>
+                <td>{{ i.event_date }}</td>
+                <td>{{ i.event_date2 }}</td>
+                <td>{{ i.description }}</td>
+                <td>{{i.status}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
